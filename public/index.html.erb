@@ -15,11 +15,12 @@
 
   <p>Great food, great atmosphere!</p>
   <img src=<%= Image.new.randomize_images %>>
-  <ul><h1>Menu Items:</h1>
-    <% Menu.new('config/menu.txt').items.each do |item| %>
-        <li><%= item %></li>
+  <dl><h1>Menu Items:</h1>
+    <% Menu.new.items.each do |item| %>
+        <dt><%= item.name %></dt>
+        <dd><%= item.price %> - <%= item.description %></dd>
     <% end %>
-  </ul>
+  </dl>
 </main>
 <footer>
   <address>

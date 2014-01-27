@@ -1,13 +1,10 @@
+require './item'
+require 'csv'
+
 class Menu
-  attr_reader :data
-
-  def initialize(file)
-    @data = File.open(file) do |file|
-      file.read
-    end
-  end
-
   def items
-    @data.lines.slice(2..6)
+    CSV.foreach('config/menu.csv', headers:true).map do |row|
+      Item.new(row[0], row [1], row[2])
+    end
   end
 end
